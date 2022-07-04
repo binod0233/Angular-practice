@@ -1,15 +1,31 @@
 <mat-grid-list cols="2" rowHeight="2:1" class="container">
   <mat-grid-tile>
-    <form class="example-form">
+    <form class="example-form" #userFrom="ngForm" (ngSubmit)="onSubmit()">
       <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Favorite food</mat-label>
-        <input matInput placeholder="Ex. Pizza" value="Sushi" />
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          placeholder="Ex. Binod"
+          name="name"
+          required
+          type="text"
+          [(ngModel)]="userModel.name"
+        />
       </mat-form-field>
 
       <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Leave a comment</mat-label>
-        <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          placeholder="Ex. It makes me feel..."
+          name="description"
+          type="text"
+          [(ngModel)]="userModel.description"
+        ></textarea>
       </mat-form-field>
+      <button mat-raised-button color="primary">Submit</button>
     </form>
   </mat-grid-tile>
 </mat-grid-list>
+
+<pre>{{ userFrom.value | json }}</pre>
